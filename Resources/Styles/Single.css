@@ -1,0 +1,16 @@
+^ContentPage {
+    background-color: #332B2B;
+}
+#Header{
+    background-color:#332B2B;
+    font-size: large;
+    font-weight:bolder;
+}
+#TableHeader {
+    background-color: #6B3B36;
+    font-weight:bold;
+}
+^Button {
+    background-color: #963C32;
+    color: white;
+}
