@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kolekcja.SingleCollectionPage"
+             Title="SingleCollectionPage">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/Single.css" />
+    </ContentPage.Resources>
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="Przedmioty w kolekcji" x:Name="Header"/>
+        </Grid>
+    </Shell.TitleView>
+    <StackLayout>
+        <StackLayout>
+            <Label Text="Dodaj nowy przedmiot: " 
+                       FontSize="Medium" Margin="10"/>
+            <HorizontalStackLayout>
+                <Label Text="Nazwa: " 
+                       FontSize="Medium" Margin="10"/>
+                <Editor x:Name="NewItemEditor"
+                        FontSize="Medium"
+                        WidthRequest="300"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Cena: " 
+                       FontSize="Medium" Margin="10"/>
+                <Editor x:Name="NewItemPrice"
+                        FontSize="Medium"
+                        WidthRequest="300"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Wybierz status"
+                       FontSize="Medium"/>
+                <Picker x:Name="Sell">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Sprzedane</x:String>
+                            <x:String>Nie sprzedane</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Zadowolenie: "
+                       FontSize="Medium"/>
+                <Editor x:Name="NewZadowolenie"
+                   FontSize="Medium"
+                        WidthRequest="300"/>
+            </HorizontalStackLayout>
+            
+            <Button Text="Dodaj" 
+                Clicked="DodajPrzedmiot_Clicked" 
+                FontSize="Medium" 
+                Margin="10"/>
+        </StackLayout>
+        <HorizontalStackLayout x:Name="TableHeader">
+            <Label 
+    Text="Nazwa" 
+    FontSize="Medium"
+    WidthRequest="200"/>
+            <Label 
+    Text="Cena" 
+    FontSize="Medium"
+    WidthRequest="200"/>
+            <Label 
+    Text="Status" 
+    FontSize="Medium"
+    WidthRequest="200"/>
+            <Label 
+    Text="Zadowolenie" 
+    FontSize="Medium"
+    WidthRequest="200"/>
+        </HorizontalStackLayout>
+        <CollectionView x:Name="CollectionsCollectionView" 
+                    ItemsSource="{Binding Items}" 
+                    SelectionMode="Single"
+                    SelectionChanged="Edytuj"
+                    ItemsLayout="VerticalList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <Label 
+                        Text="{Binding Name}" 
+                        FontSize="Medium"
+                        WidthRequest="200"
+                        Opacity="{Binding op}"/>
+                        <Label 
+                        Text="{Binding Price}" 
+                        FontSize="Medium"
+                        WidthRequest="200"
+                        Opacity="{Binding op}"/>
+                        <Label 
+                        Text="{Binding selled}" 
+                        FontSize="Medium"
+                        WidthRequest="200"
+                        Opacity="{Binding op}"/>
+                        <Label 
+                        Text="{Binding zadowolenie}" 
+                        FontSize="Medium"
+                        WidthRequest="200"
+                        Opacity="{Binding op}"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+    </StackLayout>
+</ContentPage>

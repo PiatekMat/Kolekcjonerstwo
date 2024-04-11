@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kolekcja.MainPage">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/Single.css" />
+    </ContentPage.Resources>
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="Kolekcje" x:Name="Header"/>
+        </Grid>
+    </Shell.TitleView>
+    <StackLayout>
+        <StackLayout>
+            <Label Text="Dodaj nową kolekcję: " 
+                   FontSize="Large" Margin="10"/>
+            <Editor x:Name="NewCollectionEditor"
+                    Placeholder="Nazwa nowej kolekcji" 
+                    FontSize="Medium"/>
+            <Button Text="Dodaj kolekcję" 
+                    Clicked="DodajKolekcje_Clicked" 
+                    FontSize="Medium" 
+                    Margin="10"/>
+        </StackLayout>
+
+        <CollectionView x:Name="CollectionsCollectionView" 
+                        ItemsSource="{Binding Collections}" 
+                        SelectionMode="Single"
+                        SelectionChanged="CategoryChoice">
+                           
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout 
+                        Padding="10">
+                        <Label 
+                            Text="{Binding}" 
+                            FontSize="Medium"
+                            />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
